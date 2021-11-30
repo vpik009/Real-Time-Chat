@@ -20,16 +20,21 @@
     <!--Connection established-->
     <q-form v-else class="col-12 q-mt-xl" @submit="sendMessage(username, curMessage)"> 
       <div class="row justify-center">
-        <div style="width: 100%; max-width: 400px;">
-          <q-chat-message v-for="msg in messages" :key="msg"
-            :text="[msg.message]"
-            :name="msg.user"
-            sent
-          />
-          <q-chat-message v-for="msg in messages" :key="msg"
-            :text="[msg.message]"
-            :name="msg.user"
-          />
+        <div
+        class="row"
+        style="width: 100%; max-width: 400px;">
+          <div v-for='msg in messages' :key="msg" class="col-12">
+            <q-chat-message v-if="msg.user === username"
+              :text="[msg.message]"
+              :name="msg.user"
+              sent
+            />
+            <q-chat-message v-else
+              :text="[msg.message]"
+              :name="msg.user"
+              
+            />
+          </div>
         </div>
         <div class="q-pa-md row justify-center col-12 items-center q-mt-xl" align="bottom">
           <q-input outlined v-model="curMessage" label="message..." class="col-7 q-ml-md" dense/>
