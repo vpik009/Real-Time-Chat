@@ -36,9 +36,10 @@
             />
           </div>
         </div>
-        <div class="q-pa-md row justify-center col-12 items-center q-mt-xl" align="bottom">
+        <div class="q-pa-md row justify-center col-12 items-center q-mt-xl">
           <q-input outlined v-model="curMessage" label="message..." class="col-7 q-ml-md" dense/>
-          <q-btn color="primary" label="Send" type="submit" class="col-2 q-mr-md"/>
+          <q-btn v-if="!curMessage" color="primary" label="Send" type="submit" class="col-2 q-mr-md" disable/>
+          <q-btn v-else color="primary" label="Send" type="submit" class="col-2 q-mr-md"/>
         </div>
       </div>
 
