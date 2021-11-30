@@ -1,6 +1,6 @@
 <template>
-  <div class="row col-12 justify-center items-center full-height">
-    <q-form
+  <div class="row col-12 justify-center">
+    <q-form v-if="!connection"
       @submit="onSubmit(username, room)"
       @reset="onReset"
       class="q-gutter-md col-12"
@@ -17,6 +17,25 @@
         <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
+    <!--Connection established-->
+    <q-form v-else class="col-12 q-mt-xl" @submit="sendMessage(username, curMessage)"> 
+      <div class="row justify-center">
+        <div style="width: 100%; max-width: 400px;">
+          <q-chat-message v-for="msg in messages" :key="msg"
+            :text="[msg.message]"
+            sent
+          />
+          <q-chat-message v-for="msg in messages" :key="msg"
+            :text="[msg.message]"
+          />
+        </div>
+        <div class="q-pa-md row justify-center col-12 items-center q-mt-xl" align="bottom">
+          <q-input outlined v-model="curMessage" label="message..." class="col-8 q-ml-xl" dense/>
+          <q-btn color="primary" label="Send" type="submit" class="col-1 q-mr-xl "/>
+        </div>
+      </div>
+
+    </q-form>
 </div>
 </template>
 
@@ -24,45 +43,53 @@
 import { defineComponent } from 'vue';
 import { HubConnectionBuilder, LogLevel} from "@aspnet/signalr";
 
+
 export default defineComponent({
+
   data(){
     return{
       username: '',
       room: '',
-      connection: null
+      connection: null,
+      messages: [],
+      curMessage: ''
     }
   },
-  // mounted(){
 
-  //   callHub.client.on()
-
-  // },
   methods: {
     async onSubmit(user, room){
 
-      // try{
+      try{
         const client = new HubConnectionBuilder()
               .withUrl("https://localhost:5001/chat")
               .configureLogging(LogLevel.Information)
               .build();
 
         client.on("ReceiveMessage", (user, message) => {
-          console.log("received message", message);
+          this.messages = [...this.messages, {user, message}];
         })
 
         await client.start();
         await client.invoke("joinRoom", {user, room})
 
         this.connection = client;
-      // }
-      // catch(e){
-      //   console.error(e);
-      // }
+        
+      }
+      catch(e){
+        console.error(e);
+      }
+
+      
 
     },
     onReset(){
         this.username = '';
         this.room = '';
+    },
+    sendMessage(user, message){
+      console.log(user,message);
+      this.messages = [...this.messages, {user, message}];
+      this.curMessage = '';
     }
   }
 })
