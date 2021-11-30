@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{CAB2AA85-E4C2-4DB4-8840-A897E81D3DAE}|Default">
   <MonoDevelop.Ide.ItemProperties.Real-Time-Chat PreferredExecutionTarget="/Applications/Brave Browser.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Real-Time-Chat/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Real-Time-Chat/Startup.cs">
     <Files>
       <File FileName="Real-Time-Chat/Hubs/ChatHub.cs" Line="18" Column="47" />
       <File FileName="Real-Time-Chat/UserConnection.cs" Line="6" Column="24" />
-      <File FileName="Real-Time-Chat/Startup.cs" Line="26" Column="38" />
+      <File FileName="Real-Time-Chat/Startup.cs" Line="26" Column="63" />
       <File FileName="Real-Time-Chat/appsettings.json" Line="4" Column="27" />
       <File FileName="Real-Time-Chat/Program.cs" Line="1" Column="1" />
     </Files>
@@ -14,7 +14,7 @@
           <Node name="Real-Time-Chat" expanded="True">
             <Node name="Real-Time-Chat" expanded="True">
               <Node name="Hubs" expanded="True" />
-              <Node name="Program.cs" selected="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
