@@ -72,7 +72,7 @@ export default defineComponent({
         })
 
         this.connection = client;
-        
+
         await client.start();
         await client.invoke("joinRoom", {user, room})
 
@@ -91,16 +91,15 @@ export default defineComponent({
         this.room = '';
     },
     async sendMessage(user, message){
-      // try{
+      try{
  
-        console.log(this.connection.id);
         await this.connection.invoke("sendMessage", message);
 
         this.curMessage = '';
-      // }
-      // catch(e){
-      //   console.error(e);
-      // }
+      }
+      catch(e){
+        console.error(e);
+      }
     }
   }
 })

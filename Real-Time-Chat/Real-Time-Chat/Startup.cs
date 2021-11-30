@@ -19,6 +19,7 @@ namespace Real_Time_Chat
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
+            
 
             services.AddCors(options =>
             {
@@ -33,8 +34,9 @@ namespace Real_Time_Chat
 
             });
 
-            sevices.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
-           
+            services.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
