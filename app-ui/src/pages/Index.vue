@@ -23,15 +23,17 @@
         <div style="width: 100%; max-width: 400px;">
           <q-chat-message v-for="msg in messages" :key="msg"
             :text="[msg.message]"
+            :name="msg.user"
             sent
           />
           <q-chat-message v-for="msg in messages" :key="msg"
             :text="[msg.message]"
+            :name="msg.user"
           />
         </div>
         <div class="q-pa-md row justify-center col-12 items-center q-mt-xl" align="bottom">
-          <q-input outlined v-model="curMessage" label="message..." class="col-8 q-ml-xl" dense/>
-          <q-btn color="primary" label="Send" type="submit" class="col-1 q-mr-xl "/>
+          <q-input outlined v-model="curMessage" label="message..." class="col-7 q-ml-md" dense/>
+          <q-btn color="primary" label="Send" type="submit" class="col-2 q-mr-md"/>
         </div>
       </div>
 
@@ -69,10 +71,12 @@ export default defineComponent({
           this.messages = [...this.messages, {user, message}];
         })
 
+        this.connection = client;
+        
         await client.start();
         await client.invoke("joinRoom", {user, room})
 
-        this.connection = client;
+        
         
       }
       catch(e){
@@ -86,10 +90,17 @@ export default defineComponent({
         this.username = '';
         this.room = '';
     },
-    sendMessage(user, message){
-      console.log(user,message);
-      this.messages = [...this.messages, {user, message}];
-      this.curMessage = '';
+    async sendMessage(user, message){
+      // try{
+ 
+        console.log(this.connection.id);
+        await this.connection.invoke("sendMessage", message);
+
+        this.curMessage = '';
+      // }
+      // catch(e){
+      //   console.error(e);
+      // }
     }
   }
 })

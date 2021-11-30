@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Real_Time_Chat.Hubs;
 
+
 namespace Real_Time_Chat
 {
     public class Startup
@@ -30,8 +31,10 @@ namespace Real_Time_Chat
                 }
                 );
 
-            }
-            );
+            });
+
+            sevices.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
