@@ -49,7 +49,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { HubConnectionBuilder, LogLevel} from "@aspnet/signalr";
+import { HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
 
 
 export default defineComponent({

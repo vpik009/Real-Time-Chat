@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.ItemProperties.Real-Time-Chat PreferredExecutionTarget="/Applications/Brave Browser.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Real-Time-Chat/Startup.cs">
     <Files>
-      <File FileName="Real-Time-Chat/Hubs/ChatHub.cs" Line="3" Column="36" />
+      <File FileName="Real-Time-Chat/Hubs/ChatHub.cs" Line="3" Column="30" />
       <File FileName="Real-Time-Chat/UserConnection.cs" />
       <File FileName="Real-Time-Chat/Startup.cs" Line="35" Column="1" />
       <File FileName="Real-Time-Chat/appsettings.json" />

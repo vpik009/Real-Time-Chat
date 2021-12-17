@@ -10,11 +10,10 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@microsoft/signalr": "^6.0.0",
+    "@microsoft/signalr": "^6.0.1",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
-    "quasar": "^2.0.0",
-    "@aspnet/signalr": "8.1.0"
+    "quasar": "^2.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
